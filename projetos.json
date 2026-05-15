@@ -1,14 +1,19 @@
 [
   {
     "id": 1,
-    "titulo": "Quilombos de várzea e regularização fundiária em Santarém",
+    "titulo": "Quilombos de várzea e regularização fundiária",
     "autor": "Autor 1",
     "ano": 2023,
     "tipo": "Tese",
     "cat": "local",
-    "cor": "#7C5CBF",
-    "desc": "Comunidades quilombolas Arapemã, Saracura, Surubiú-Açu e Maria Valentina na várzea de Santarém/PA. Analisa desafios da regularização fundiária à luz do direito territorial quilombola e da CF/1988.",
-    "bbox": [-55.1, -2.75, -54.45, -2.15]
+    "cor": "#7b61c9",
+    "desc": "Comunidades quilombolas Arapemã, Saracura, Surubiú-Açu e Maria Valentina na área de várzea do rio Amazonas no município de Santarém/PA.",
+    "tipo_area": "polygon",
+    "coords": [
+      [-55.0,-2.1],[-54.8,-2.0],[-54.5,-1.9],[-54.2,-1.95],
+      [-54.0,-2.1],[-54.1,-2.4],[-54.4,-2.55],[-54.7,-2.6],
+      [-55.0,-2.5],[-55.1,-2.3],[-55.0,-2.1]
+    ]
   },
   {
     "id": 2,
@@ -17,9 +22,15 @@
     "ano": 2024,
     "tipo": "Tese",
     "cat": "amazonia",
-    "cor": "#1D9E75",
-    "desc": "Analisa tendências no ecoturismo de base comunitária (CBET) e o potencial das libélulas (Odonata) na RESEX Tapajós-Arapiuns.",
-    "bbox": [-56.8, -4.8, -54.2, -1.8]
+    "cor": "#2a9d8f",
+    "desc": "Tendências no ecoturismo de base comunitária e potencial das libélulas (Odonata) como organismos-chave na RESEX Tapajós-Arapiuns.",
+    "tipo_area": "polygon",
+    "coords": [
+      [-55.0,-2.5],[-54.7,-2.6],[-54.4,-2.7],[-54.2,-3.0],
+      [-54.0,-3.4],[-54.1,-3.9],[-54.4,-4.4],[-54.7,-4.7],
+      [-55.0,-4.8],[-55.4,-4.6],[-55.7,-4.2],[-55.9,-3.7],
+      [-55.8,-3.2],[-55.5,-2.8],[-55.2,-2.5],[-55.0,-2.5]
+    ]
   },
   {
     "id": 3,
@@ -28,20 +39,44 @@
     "ano": 2024,
     "tipo": "Tese",
     "cat": "amazonia",
-    "cor": "#1D9E75",
-    "desc": "Caracteriza e analisa atividades e relações socioambientais na zona populacional da FLONA Tapajós, com foco em desenvolvimento sustentável.",
-    "bbox": [-56.2, -5.2, -54.3, -2.3]
+    "cor": "#2a9d8f",
+    "desc": "Atividades e relações socioambientais na zona populacional da FLONA Tapajós, com foco em desenvolvimento sustentável e gestão institucional.",
+    "tipo_area": "polygon",
+    "coords": [
+      [-55.0,-2.6],[-54.9,-2.8],[-54.8,-3.2],[-54.7,-3.7],
+      [-54.7,-4.2],[-54.8,-4.7],[-55.0,-5.1],[-55.2,-5.2],
+      [-55.5,-5.0],[-55.6,-4.5],[-55.5,-4.0],[-55.4,-3.5],
+      [-55.3,-3.0],[-55.2,-2.7],[-55.1,-2.5],[-55.0,-2.6]
+    ]
   },
   {
     "id": 4,
-    "titulo": "Cadeia comercial de peixes ornamentais na bacia do Tapajós",
+    "titulo": "Cadeia comercial de peixes ornamentais — bacias do Tapajós e Xingu",
     "autor": "Autor 4",
     "ano": 2023,
     "tipo": "Tese",
     "cat": "amazonia",
-    "cor": "#1D9E75",
-    "desc": "Mapeia a cadeia de comercialização de peixes ornamentais nos rios Xingu e Tapajós, com foco em Trairão e Pimental/PA.",
-    "bbox": [-57.8, -7.0, -53.5, -1.8]
+    "cor": "#457b9d",
+    "desc": "Cadeia de comercialização de peixes ornamentais nas bacias dos rios Tapajós (Trairão, Pimental) e Xingu, oeste do Pará. Inclui citogenética de Hypostomus soniae.",
+    "tipo_area": "multipolygon",
+    "areas": [
+      {
+        "label": "Bacia do Tapajós",
+        "coords": [
+          [-55.5,-2.5],[-55.0,-3.0],[-54.8,-4.0],[-54.9,-5.5],
+          [-55.3,-6.5],[-55.8,-7.0],[-56.2,-6.8],[-56.5,-6.0],
+          [-56.3,-5.0],[-55.9,-4.0],[-55.7,-3.0],[-55.5,-2.5]
+        ]
+      },
+      {
+        "label": "Bacia do Xingu",
+        "coords": [
+          [-52.5,-1.5],[-52.0,-2.0],[-51.8,-3.0],[-51.9,-4.5],
+          [-52.2,-5.5],[-52.6,-6.0],[-53.1,-5.8],[-53.3,-4.8],
+          [-53.1,-3.5],[-52.8,-2.5],[-52.5,-1.5]
+        ]
+      }
+    ]
   },
   {
     "id": 5,
@@ -50,8 +85,14 @@
     "ano": 2024,
     "tipo": "Tese",
     "cat": "amazonia",
-    "cor": "#1D9E75",
-    "desc": "Analisa como múltiplas identidades são construídas na arena da emancipação política do Lago Grande do Curuai — Pará.",
-    "bbox": [-56.8, -2.6, -55.0, -1.4]
+    "cor": "#e76f51",
+    "desc": "Múltiplas identidades na arena da emancipação política do Lago Grande do Curuai — distrito de Santarém/PA, entre os municípios de Óbidos, Juruti e Santarém.",
+    "tipo_area": "polygon",
+    "coords": [
+      [-55.8,-1.7],[-55.5,-1.5],[-55.1,-1.4],[-54.8,-1.5],
+      [-54.6,-1.8],[-54.6,-2.1],[-54.8,-2.4],[-55.1,-2.6],
+      [-55.5,-2.5],[-55.8,-2.3],[-56.0,-2.0],[-55.9,-1.8],
+      [-55.8,-1.7]
+    ]
   }
 ]
