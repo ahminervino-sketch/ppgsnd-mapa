@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Inserção Regional — PPGSND/UFOPA</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+:root {
+  --bg: #EDF2F4; --card: #fff; --texto: #1e2a38;
+  --muted: #6b7f8a; --borda: #d0dce3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg); color: var(--texto);
+  height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+header {
+  background: var(--texto); color: #edf2f4;
+  padding: 11px 22px; display: flex;
+  align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+header h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px; font-weight: 400;
+}
+.sub { font-size: 10px; color: #8fa3b1; letter-spacing: .07em; text-transform: uppercase; }
+.layout { display: grid; grid-template-columns: 275px 1fr; flex: 1; overflow: hidden; }
+
+aside {
+  background: var(--card); border-right: 1px solid var(--borda);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.aside-top { padding: 13px 15px 10px; border-bottom: 1px solid var(--borda); flex-shrink: 0; }
+.aside-top h2 {
+  font-size: 10px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px;
+}
+.filters { display: flex; gap: 4px; flex-wrap: wrap; }
+.fb {
+  font-size: 10px; padding: 3px 9px; border-radius: 20px;
+  border: 1px solid var(--borda); background: transparent;
+  cursor: pointer; color: var(--muted); font-family: inherit; transition: all .15s;
+}
+.fb:hover { border-color: var(--texto); color: var(--texto); }
+.fb.on { background: var(--texto); color: #edf2f4; border-color: var(--texto); }
+
+.proj-list { overflow-y: auto; flex: 1; padding: 6px 8px; }
+.pitem {
+  padding: 8px 9px; border-radius: 7px; cursor: pointer;
+  border: 1px solid transparent; margin-bottom: 3px;
+  display: flex; gap: 8px; align-items: flex-start; transition: all .15s;
+}
+.pitem:hover { background: var(--bg); }
+.pitem.on { background: var(--bg); }
+.pdot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.ptitle { font-size: 12px; font-weight: 600; line-height: 1.4; color: var(--texto); }
+.psub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.ptag {
+  display: inline-block; font-size: 9px; padding: 1px 7px;
+  border-radius: 20px; margin-top: 3px; font-weight: 600;
+}
+.info-box {
+  padding: 12px 15px; border-top: 1px solid var(--borda);
+  min-height: 95px; font-size: 11px; line-height: 1.65;
+  color: var(--muted); background: #f4f6f8; flex-shrink: 0;
+}
+.info-box strong { color: var(--texto); font-size: 12px; display: block; margin-bottom: 3px; }
+.info-box em { font-style: italic; }
+
+main { position: relative; background: #a8c8d8; overflow: hidden; }
+#map-svg { width: 100%; height: 100%; display: block; cursor: grab; }
+#map-svg:active { cursor: grabbing; }
+.land { stroke: #7aa0b0; stroke-width: .4; fill: #cde0d0; }
+.land.brazil { stroke: #5a9a50; stroke-width: .8; fill: #a8cf98; }
+.overlay { opacity: 0; transition: opacity .4s; pointer-events: none; }
+.overlay.vis { opacity: 1; }
+
+.legend {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(255,255,255,.95); border: 1px solid var(--borda);
+  border-radius: 8px; padding: 8px 13px; font-size: 10px;
+}
+.legend h4 {
+  font-size: 9px; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--muted); margin-bottom: 6px; font-weight: 600;
+}
+.leg-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; color: var(--texto); }
+.leg-d { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+.zoom-btns { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 4px; }
+.zoom-btns button {
+  width: 28px; height: 28px; border-radius: 6px;
+  border: 1px solid var(--borda); background: rgba(255,255,255,.92);
+  cursor: pointer; font-size: 15px; color: var(--texto);
+  display: flex; align-items: center; justify-content: center;
+}
+.zoom-btns button:hover { background: #fff; }
+
+#loading-msg {
+  position: absolute; inset: 0; display: flex;
+  align-items: center; justify-content: center;
+  background: #a8c8d8; font-size: 13px; color: #1e2a38;
+  pointer-events: none; z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Inserção Regional — PPGSND / UFOPA</h1>
+  <span class="sub">Programa de Pós-Graduação em Sociedade, Natureza e Desenvolvimento · Santarém · Pará</span>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="aside-top">
+      <h2>Teses e Dissertações</h2>
+      <div class="filters">
+        <button class="fb on" onclick="setFat(this,'todos')">Todos</button>
+        <button class="fb" onclick="setFat(this,'local')">Local</button>
+        <button class="fb" onclick="setFat(this,'amazonia')">Amazônia</button>
+        <button class="fb" onclick="setFat(this,'nacional')">Nacional</button>
+        <button class="fb" onclick="setFat(this,'internacional')">Internacional</button>
+      </div>
+    </div>
+    <div class="proj-list" id="proj-list"></div>
+    <div class="info-box" id="proj-info">
+      <em>Selecione um projeto para ver a área de abrangência no mapa.</em>
+    </div>
+  </aside>
+
+  <main>
+    <div id="loading-msg">Carregando mapa...</div>
+    <svg id="map-svg"></svg>
+    <div class="zoom-btns">
+      <button onclick="doZoom(1.5)" title="Aproximar">+</button>
+      <button onclick="doZoom(0.66)" title="Afastar">−</button>
+      <button onclick="resetView()" title="Visão geral" style="font-size:11px">↺</button>
+    </div>
+    <div class="legend">
+      <h4>Escopo geográfico</h4>
+      <div class="leg-row"><div class="leg-d" style="background:#534AB7"></div>Local/Municipal</div>
+      <div class="leg-row"><div class="leg-d" style="background:#1D9E75"></div>Amazônia</div>
+      <div class="leg-row"><div class="leg-d" style="background:#993C1D"></div>Nacional</div>
+      <div class="leg-row"><div class="leg-d" style="background:#185FA5"></div>Internacional</div>
+    </div>
+  </main>
+</div>
+
+<script>
+var PROJ = [], fat = "todos", ativo = null;
+var svgSel, g, proj, pathFn, zoomB;
+
+function W() { return document.querySelector("main").clientWidth || 600; }
+function H() { return document.querySelector("main").clientHeight || 560; }
+
+function initMap(world) {
+  document.getElementById("loading-msg").style.display = "none";
+  var w = W(), h = H();
+  svgSel = d3.select("#map-svg").attr("width", w).attr("height", h);
+  proj = d3.geoMercator().center([-52, -8]).scale(w * 1.3).translate([w/2, h/2]);
+  pathFn = d3.geoPath().projection(proj);
+  zoomB = d3.zoom().scaleExtent([0.3, 120]).on("zoom", function(e) {
+    g.attr("transform", e.transform);
+  });
+  svgSel.call(zoomB);
+  g = svgSel.append("g");
+
+  g.selectAll(".land")
+    .data(world.features)
+    .enter().append("path")
+    .attr("class", function(d) {
+      return d.properties.name === "Brazil" ? "land brazil" : "land";
+    })
+    .attr("d", pathFn);
+
+  var brPt = proj([-50, -12]);
+  g.append("text")
+    .attr("x", brPt[0]).attr("y", brPt[1])
+    .attr("text-anchor", "middle").attr("font-size", "12px")
+    .attr("font-weight", "600").attr("fill", "#3a6a3a")
+    .attr("font-family", "sans-serif").attr("pointer-events", "none")
+    .text("Brasil");
+
+  var sede = proj([-54.72, -2.44]);
+  g.append("circle")
+    .attr("cx", sede[0]).attr("cy", sede[1]).attr("r", 6)
+    .attr("fill", "#c83c1e").attr("stroke", "white").attr("stroke-width", 2);
+  g.append("circle")
+    .attr("cx", sede[0]).attr("cy", sede[1]).attr("r", 2.5).attr("fill", "white");
+  g.append("text")
+    .attr("x", sede[0] + 9).attr("y", sede[1] - 3)
+    .attr("font-size", "9px").attr("fill", "#c83c1e")
+    .attr("font-family", "sans-serif").attr("font-weight", "700")
+    .attr("pointer-events", "none").text("Santarém / UFOPA");
+}
+
+function drawOverlays() {
+  if (!g) return;
+  g.selectAll(".overlay").remove();
+  PROJ.forEach(function(p) {
+    var b = p.bbox;
+    var coords = [[b[0],b[1]], [b[2],b[1]], [b[2],b[3]], [b[0],b[3]], [b[0],b[1]]];
+    g.append("path")
+      .attr("id", "ov-" + p.id)
+      .attr("class", "overlay")
+      .attr("d", pathFn({type:"Feature", geometry:{type:"Polygon", coordinates:[coords]}}))
+      .attr("fill", p.cor).attr("fill-opacity", 0.38)
+      .attr("stroke", p.cor).attr("stroke-width", 2.5)
+      .attr("stroke-linejoin", "round");
+  });
+}
+
+function zoomTo(bbox) {
+  var x0=bbox[0], y0=bbox[1], x1=bbox[2], y1=bbox[3], pad=0.25;
+  var dx=x1-x0, dy=y1-y0;
+  var p0=proj([x0-dx*pad, y0-dy*pad]), p1=proj([x1+dx*pad, y1+dy*pad]);
+  if (!p0 || !p1) return;
+  var w=W(), h=H();
+  var bw=Math.abs(p1[0]-p0[0]), bh=Math.abs(p1[1]-p0[1]);
+  var sc=Math.min(w/bw, h/bh) * 0.82;
+  var cx=proj([(x0+x1)/2, (y0+y1)/2]);
+  svgSel.transition().duration(750).call(
+    zoomB.transform,
+    d3.zoomIdentity.translate(w/2 - sc*cx[0], h/2 - sc*cx[1]).scale(sc)
+  );
+}
+
+function resetView() {
+  svgSel.transition().duration(650).call(zoomB.transform, d3.zoomIdentity);
+}
+
+function doZoom(f) {
+  svgSel.transition().duration(300).call(zoomB.scaleBy, f);
+}
+
+function ativar(p) {
+  PROJ.forEach(function(pr) {
+    var e = document.getElementById("ov-" + pr.id);
+    if (e) e.classList.remove("vis");
+  });
+  var ov = document.getElementById("ov-" + p.id);
+  if (ov) ov.classList.add("vis");
+  ativo = p.id;
+  render();
+  zoomTo(p.bbox);
+  document.getElementById("proj-info").innerHTML =
+    "<strong>" + p.titulo + "</strong>" +
+    "<span style='font-size:10px;color:var(--muted)'>" + p.autor + " &nbsp;·&nbsp; " + p.tipo + " &nbsp;·&nbsp; " + p.ano + "</span>" +
+    "<p style='margin-top:5px'>" + p.desc + "</p>";
+}
+
+function setFat(btn, cat) {
+  fat = cat; ativo = null;
+  document.querySelectorAll(".fb").forEach(function(b) { b.classList.remove("on"); });
+  btn.classList.add("on");
+  PROJ.forEach(function(pr) {
+    var e = document.getElementById("ov-" + pr.id);
+    if (e) e.classList.remove("vis");
+  });
+  document.getElementById("proj-info").innerHTML =
+    "<em>Selecione um projeto para ver a área de abrangência no mapa.</em>";
+  resetView();
+  render();
+}
+
+function render() {
+  var el = document.getElementById("proj-list");
+  el.innerHTML = "";
+  PROJ.filter(function(p) { return fat === "todos" || p.cat === fat; })
+    .forEach(function(p) {
+      var d = document.createElement("div");
+      d.className = "pitem" + (ativo === p.id ? " on" : "");
+      if (ativo === p.id) d.style.borderColor = p.cor;
+      d.innerHTML =
+        "<div class='pdot' style='background:" + p.cor + "'></div>" +
+        "<div><div class='ptitle'>" + p.titulo + "</div>" +
+        "<div class='psub'>" + p.autor + " · " + p.ano + "</div>" +
+        "<span class='ptag' style='background:" + p.cor + "22;color:" + p.cor + "'>" + p.tipo + "</span></div>";
+      d.onclick = (function(pp) { return function() { ativar(pp); }; })(p);
+      el.appendChild(d);
+    });
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+  fetch("world.json")
+    .then(function(r) { return r.json(); })
+    .then(function(world) {
+      initMap(world);
+      return fetch("projetos.json");
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      PROJ = data;
+      drawOverlays();
+      render();
+    })
+    .catch(function(err) {
+      document.getElementById("loading-msg").textContent = "Erro: " + err.message;
+      console.error(err);
+    });
+});
+</script>
+</body>
+</html>

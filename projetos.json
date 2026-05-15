@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "titulo": "Quilombos de várzea e regularização fundiária em Santarém",
+    "autor": "Autor 1",
+    "ano": 2023,
+    "tipo": "Tese",
+    "cat": "local",
+    "cor": "#534AB7",
+    "desc": "Comunidades quilombolas Arapemã, Saracura, Surubiú-Açu e Maria Valentina na várzea de Santarém/PA. Analisa desafios da regularização fundiária à luz do direito territorial quilombola e da CF/1988.",
+    "bbox": [-55.1, -2.75, -54.45, -2.15]
+  },
+  {
+    "id": 2,
+    "titulo": "Ecoturismo de base comunitária e libélulas na RESEX Tapajós-Arapiuns",
+    "autor": "Autor 2",
+    "ano": 2024,
+    "tipo": "Tese",
+    "cat": "amazonia",
+    "cor": "#1D9E75",
+    "desc": "Analisa tendências no ecoturismo de base comunitária (CBET) e o potencial das libélulas (Odonata) como organismos-chave para o CBET na RESEX Tapajós-Arapiuns.",
+    "bbox": [-56.8, -4.8, -54.2, -1.8]
+  },
+  {
+    "id": 3,
+    "titulo": "Atividades socioambientais na Floresta Nacional do Tapajós",
+    "autor": "Autor 3",
+    "ano": 2024,
+    "tipo": "Tese",
+    "cat": "amazonia",
+    "cor": "#1D9E75",
+    "desc": "Caracteriza e analisa atividades e relações socioambientais na zona populacional da FLONA Tapajós, com foco em indicadores de desenvolvimento sustentável e gestão institucional.",
+    "bbox": [-56.2, -5.2, -54.3, -2.3]
+  },
+  {
+    "id": 4,
+    "titulo": "Cadeia comercial de peixes ornamentais na bacia do Tapajós",
+    "autor": "Autor 4",
+    "ano": 2023,
+    "tipo": "Tese",
+    "cat": "amazonia",
+    "cor": "#1D9E75",
+    "desc": "Mapeia a cadeia de comercialização de peixes ornamentais nos rios Xingu e Tapajós, com foco em Trairão e Pimental/PA. Inclui citogenética de Hypostomus soniae.",
+    "bbox": [-57.8, -7.0, -53.5, -1.8]
+  },
+  {
+    "id": 5,
+    "titulo": "Identidades e emancipação política do Lago Grande do Curuai",
+    "autor": "Autor 5",
+    "ano": 2024,
+    "tipo": "Tese",
+    "cat": "amazonia",
+    "cor": "#1D9E75",
+    "desc": "Analisa como múltiplas identidades são construídas na arena da emancipação política do Lago Grande do Curuai, Distrito de Curuai — Pará.",
+    "bbox": [-56.8, -2.6, -55.0, -1.4]
+  }
+]
