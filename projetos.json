@@ -9,11 +9,7 @@
     "cor": "#7b61c9",
     "desc": "Comunidades quilombolas Arapemã, Saracura, Surubiú-Açu e Maria Valentina na área de várzea do rio Amazonas no município de Santarém/PA.",
     "tipo_area": "polygon",
-    "coords": [
-      [-55.0,-2.1],[-54.8,-2.0],[-54.5,-1.9],[-54.2,-1.95],
-      [-54.0,-2.1],[-54.1,-2.4],[-54.4,-2.55],[-54.7,-2.6],
-      [-55.0,-2.5],[-55.1,-2.3],[-55.0,-2.1]
-    ]
+    "coords": [[-55.0,-2.1],[-54.8,-2.0],[-54.5,-1.9],[-54.2,-1.95],[-54.0,-2.1],[-54.1,-2.4],[-54.4,-2.55],[-54.7,-2.6],[-55.0,-2.5],[-55.1,-2.3],[-55.0,-2.1]]
   },
   {
     "id": 2,
@@ -25,12 +21,7 @@
     "cor": "#2a9d8f",
     "desc": "Tendências no ecoturismo de base comunitária e potencial das libélulas (Odonata) como organismos-chave na RESEX Tapajós-Arapiuns.",
     "tipo_area": "polygon",
-    "coords": [
-      [-55.0,-2.5],[-54.7,-2.6],[-54.4,-2.7],[-54.2,-3.0],
-      [-54.0,-3.4],[-54.1,-3.9],[-54.4,-4.4],[-54.7,-4.7],
-      [-55.0,-4.8],[-55.4,-4.6],[-55.7,-4.2],[-55.9,-3.7],
-      [-55.8,-3.2],[-55.5,-2.8],[-55.2,-2.5],[-55.0,-2.5]
-    ]
+    "coords": [[-55.0,-2.5],[-54.7,-2.6],[-54.4,-2.7],[-54.2,-3.0],[-54.0,-3.4],[-54.1,-3.9],[-54.4,-4.4],[-54.7,-4.7],[-55.0,-4.8],[-55.4,-4.6],[-55.7,-4.2],[-55.9,-3.7],[-55.8,-3.2],[-55.5,-2.8],[-55.2,-2.5],[-55.0,-2.5]]
   },
   {
     "id": 3,
@@ -42,12 +33,7 @@
     "cor": "#2a9d8f",
     "desc": "Atividades e relações socioambientais na zona populacional da FLONA Tapajós, com foco em desenvolvimento sustentável e gestão institucional.",
     "tipo_area": "polygon",
-    "coords": [
-      [-55.0,-2.6],[-54.9,-2.8],[-54.8,-3.2],[-54.7,-3.7],
-      [-54.7,-4.2],[-54.8,-4.7],[-55.0,-5.1],[-55.2,-5.2],
-      [-55.5,-5.0],[-55.6,-4.5],[-55.5,-4.0],[-55.4,-3.5],
-      [-55.3,-3.0],[-55.2,-2.7],[-55.1,-2.5],[-55.0,-2.6]
-    ]
+    "coords": [[-55.0,-2.6],[-54.9,-2.8],[-54.8,-3.2],[-54.7,-3.7],[-54.7,-4.2],[-54.8,-4.7],[-55.0,-5.1],[-55.2,-5.2],[-55.5,-5.0],[-55.6,-4.5],[-55.5,-4.0],[-55.4,-3.5],[-55.3,-3.0],[-55.2,-2.7],[-55.1,-2.5],[-55.0,-2.6]]
   },
   {
     "id": 4,
@@ -57,25 +43,11 @@
     "tipo": "Tese",
     "cat": "amazonia",
     "cor": "#457b9d",
-    "desc": "Cadeia de comercialização de peixes ornamentais nas bacias dos rios Tapajós (Trairão, Pimental) e Xingu, oeste do Pará. Inclui citogenética de Hypostomus soniae.",
+    "desc": "Cadeia de comercialização de peixes ornamentais nas bacias dos rios Tapajós (Trairão, Pimental) e Xingu, oeste do Pará.",
     "tipo_area": "multipolygon",
     "areas": [
-      {
-        "label": "Bacia do Tapajós",
-        "coords": [
-          [-55.5,-2.5],[-55.0,-3.0],[-54.8,-4.0],[-54.9,-5.5],
-          [-55.3,-6.5],[-55.8,-7.0],[-56.2,-6.8],[-56.5,-6.0],
-          [-56.3,-5.0],[-55.9,-4.0],[-55.7,-3.0],[-55.5,-2.5]
-        ]
-      },
-      {
-        "label": "Bacia do Xingu",
-        "coords": [
-          [-52.5,-1.5],[-52.0,-2.0],[-51.8,-3.0],[-51.9,-4.5],
-          [-52.2,-5.5],[-52.6,-6.0],[-53.1,-5.8],[-53.3,-4.8],
-          [-53.1,-3.5],[-52.8,-2.5],[-52.5,-1.5]
-        ]
-      }
+      {"label": "Bacia do Tapajós", "coords": [[-55.5,-2.5],[-55.0,-3.0],[-54.8,-4.0],[-54.9,-5.5],[-55.3,-6.5],[-55.8,-7.0],[-56.2,-6.8],[-56.5,-6.0],[-56.3,-5.0],[-55.9,-4.0],[-55.7,-3.0],[-55.5,-2.5]]},
+      {"label": "Bacia do Xingu", "coords": [[-52.5,-1.5],[-52.0,-2.0],[-51.8,-3.0],[-51.9,-4.5],[-52.2,-5.5],[-52.6,-6.0],[-53.1,-5.8],[-53.3,-4.8],[-53.1,-3.5],[-52.8,-2.5],[-52.5,-1.5]]}
     ]
   },
   {
@@ -86,13 +58,59 @@
     "tipo": "Tese",
     "cat": "amazonia",
     "cor": "#e76f51",
-    "desc": "Múltiplas identidades na arena da emancipação política do Lago Grande do Curuai — distrito de Santarém/PA, entre os municípios de Óbidos, Juruti e Santarém.",
+    "desc": "Múltiplas identidades na arena da emancipação política do Lago Grande do Curuai — distrito entre Óbidos, Juruti e Santarém/PA.",
     "tipo_area": "polygon",
-    "coords": [
-      [-55.8,-1.7],[-55.5,-1.5],[-55.1,-1.4],[-54.8,-1.5],
-      [-54.6,-1.8],[-54.6,-2.1],[-54.8,-2.4],[-55.1,-2.6],
-      [-55.5,-2.5],[-55.8,-2.3],[-56.0,-2.0],[-55.9,-1.8],
-      [-55.8,-1.7]
+    "coords": [[-55.8,-1.7],[-55.5,-1.5],[-55.1,-1.4],[-54.8,-1.5],[-54.6,-1.8],[-54.6,-2.1],[-54.8,-2.4],[-55.1,-2.6],[-55.5,-2.5],[-55.8,-2.3],[-56.0,-2.0],[-55.9,-1.8],[-55.8,-1.7]]
+  },
+  {
+    "id": 6,
+    "titulo": "Uso do solo nas regiões Sul e Sudeste do Pará",
+    "autor": "Autor 6",
+    "ano": 2024,
+    "tipo": "Tese",
+    "cat": "amazonia",
+    "cor": "#e9c46a",
+    "desc": "Análise das dinâmicas de uso do solo e desmatamento nas mesorregiões Sul e Sudeste do Pará, com foco em fronteiras agropecuárias.",
+    "tipo_area": "polygon",
+    "coords": [[-51.0,-2.5],[-48.0,-2.0],[-46.5,-3.0],[-46.0,-5.0],[-47.5,-8.0],[-50.0,-10.0],[-52.5,-9.5],[-54.5,-8.5],[-55.0,-7.0],[-54.0,-5.0],[-52.5,-3.5],[-51.0,-2.5]]
+  },
+  {
+    "id": 7,
+    "titulo": "Comunidades costeiras no litoral da Colômbia",
+    "autor": "Autor 7",
+    "ano": 2024,
+    "tipo": "Tese",
+    "cat": "internacional",
+    "cor": "#f4a261",
+    "desc": "Estudo comparativo de comunidades costeiras no litoral Pacífico da Colômbia e sua relação com o extrativismo na Amazônia ocidental.",
+    "tipo_area": "polygon",
+    "coords": [[-77.5,1.5],[-77.0,2.5],[-76.5,3.5],[-76.8,5.0],[-77.5,6.5],[-78.5,7.5],[-79.5,8.0],[-80.0,7.0],[-79.5,5.0],[-78.8,3.0],[-78.0,1.5],[-77.5,1.5]]
+  },
+  {
+    "id": 8,
+    "titulo": "Governança ambiental na Baía de Guanabara",
+    "autor": "Autor 8",
+    "ano": 2023,
+    "tipo": "Dissertação",
+    "cat": "nacional",
+    "cor": "#e76f51",
+    "desc": "Análise dos mecanismos de governança ambiental e conflitos socioambientais na Baía de Guanabara, Rio de Janeiro.",
+    "tipo_area": "polygon",
+    "coords": [[-43.4,-22.6],[-43.1,-22.5],[-43.0,-22.7],[-43.1,-23.0],[-43.3,-23.1],[-43.5,-23.0],[-43.6,-22.8],[-43.4,-22.6]]
+  },
+  {
+    "id": 9,
+    "titulo": "Políticas ambientais comparadas: França e Espanha",
+    "autor": "Autor 9",
+    "ano": 2025,
+    "tipo": "Tese",
+    "cat": "internacional",
+    "cor": "#264653",
+    "desc": "Análise comparativa de políticas ambientais e instrumentos de gestão de áreas protegidas na França e Espanha, com paralelos para a Amazônia.",
+    "tipo_area": "multipolygon",
+    "areas": [
+      {"label": "França", "coords": [[-4.5,42.5],[-1.5,43.5],[3.0,43.5],[7.5,43.8],[8.0,44.5],[7.0,46.0],[6.5,48.0],[4.0,49.5],[2.0,51.0],[-2.0,48.5],[-4.5,47.5],[-4.5,42.5]]},
+      {"label": "Espanha", "coords": [[-9.0,36.0],[-6.0,36.5],[-2.0,36.5],[3.5,37.5],[4.5,40.0],[3.0,42.5],[-2.0,43.5],[-4.5,43.5],[-8.5,43.5],[-9.5,42.0],[-9.0,38.0],[-9.0,36.0]]}
     ]
   }
 ]
